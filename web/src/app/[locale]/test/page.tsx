@@ -3,7 +3,6 @@ import { Survey } from './survey';
 import { useTranslations } from 'next-intl';
 import { saveTest } from '@/actions';
 import { unstable_setRequestLocale } from 'next-intl/server';
-import { TestLanguageSwitch } from './test-language-switch';
 
 const questionLanguages = getInfo().languages;
 
@@ -22,21 +21,13 @@ export default function TestPage({
   const questions = getItems(language);
   const t = useTranslations('test');
   return (
-    <>
-      <div className='flex'>
-        <TestLanguageSwitch
-          availableLanguages={questionLanguages}
-          language={language}
-        />
-      </div>
-      <Survey
-        questions={questions}
-        nextText={t('next')}
-        prevText={t('back')}
-        resultsText={t('seeResults')}
-        saveTest={saveTest}
-        language={language}
-      />
-    </>
+    <Survey
+      questions={questions}
+      nextText={t('next')}
+      prevText={t('back')}
+      resultsText={t('seeResults')}
+      saveTest={saveTest}
+      language={language}
+    />
   );
 }
