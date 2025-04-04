@@ -29,7 +29,9 @@ export const TestLanguageSwitch = ({
   // 在组件加载时自动同步语言
   useEffect(() => {
     // 使用映射表获取对应的测试语言
-    const mappedTestLang = LOCALE_TO_TEST_LANG[appLocale] || appLocale;
+    const mappedTestLang = appLocale in LOCALE_TO_TEST_LANG 
+      ? LOCALE_TO_TEST_LANG[appLocale as keyof typeof LOCALE_TO_TEST_LANG] 
+      : appLocale;
     
     // 确认此语言可用
     const langExists = availableLanguages.some(lang => lang.id === mappedTestLang);
