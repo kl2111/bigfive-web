@@ -11,6 +11,7 @@ import { basePath, getNavItems, locales, siteConfig } from '@/config/site';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import useTextDirection from '@/hooks/use-text-direction';
 import Script from 'next/script';
 import CookieBanner from '@/components/cookie-consent';
@@ -121,6 +122,7 @@ export default async function RootLayout({
           strategy='beforeInteractive'
         />
         <Analytics />
+        <SpeedInsights />
       </body>
       <GoogleAnalytics gaId={gaId} />
     </html>
